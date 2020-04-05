@@ -1,0 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #018ded url(http://unsplash.it/1500/1000?image=881&blur=5);
+    background-size: cover;
+    font-family: 'helvetica neue';
+    text-align: center;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.clock {
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+    box-shadow: 
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2)
+}
+
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px); /*Altura do ponteiro em relação ao eixo X - se deixar em zero fica bem no meio, e queremo que fique um pouco pra cima - em programção a direção dos eixos é invertida*/
+}
+
+.clock-face .center-point {
+    position: absolute;
+    top: calc(50% - 9.5px);
+    left: calc(50% - 9.5px);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 1);
+
+}
+
+.clock-face .center-point-second {
+    position: absolute;
+    top: calc(50% - 4.25px);
+    left: calc(50% - 4.25px);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(226, 18, 18, 1);
+    z-index: 2;
+}
+
+.hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%; /* Eixo de rotação do ponteiro - Por padrão é 50% então quando usarmos o transform: rotate(xxdeg) ele vai girar no eixo das pontas - transform: rotate(xxdeg) vamos usar no js para girar o ponteiro */
+    transform: rotate(90deg); /* Rotação do ponteiro*/
+    transition: all 0.05s; /* Tempo de transição do ponteiro*/
+    transition-timing-function: cubic-bezier(1, 2.69, 0.6, 1.11); /*tipo de movimento do ponteiro - usar o inspecionar elemento do chrome para visualizar alteraçoes*/
+    z-index: 1;
+}
+
+.second-hand {
+    background: rgba(226, 18, 18, 0.794);
+    height: 2px;
+    border-radius: 70%;
+}
+
+.minute-hand {
+    background: black;
+    height: 4px;
+    border-radius: 50% 50% 10% 10%;
+}
+
+.hour-hand {
+    background: black;
+    border-radius: 50px 0px 0px 50px;
+    width: 100px;
+    left: 13%;
+}
+
+.no-transition {
+    transition: none !important;
+}
